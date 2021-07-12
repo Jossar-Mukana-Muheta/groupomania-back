@@ -6,6 +6,6 @@ const router = express.Router();
 router.post("/register", UserController.register);
 router.post("/login", UserController.login);
 //router.put("/user/password", LoginController.change_password);
-//router.delete("/user", LoginController.delete_user);
+router.delete("/user", UserController.delete_user);
 
 module.exports = router;

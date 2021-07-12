@@ -60,7 +60,15 @@ class Commentaire {
   async readAll() {
     logger(loglevel, "readAll commentaires service called");
     try {
-      const response = await commentaireModel.findAll({});
+      const response = await commentaireModel.findAll({
+
+          order: [
+            ['true', 'DESC'],
+
+          ],
+        },
+
+      );
       //logger(loglevel, response);
       return {
         success: true,
@@ -83,10 +91,14 @@ class Commentaire {
   async read(data) {
     logger(loglevel, "read commentaires service called");
     try {
-      const response = await commentaireModel.findOne({
+      const response = await commentaireModel.findAll({
         where: {
-          uid: data.params.id
+          userId: data.params.id
         },
+        order: [
+          ['true', 'DESC'],
+
+        ],
       });
       logger(loglevel, response);
       return {

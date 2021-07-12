@@ -131,7 +131,7 @@ async function delete_user(req, res) {
         status: resultat.status,
       });
     }
-    return res.send(resultat.body);
+    return res.send(resultat);
   } catch (error) {
     return res.status(500).send(error);
   }

@@ -14,12 +14,10 @@ function logger(lvl, msg) {
 module.exports = (req, res, next) => {
   try {
     logger(loglevel, "auth middleware called ")
-    logger(loglevel, req.headers.authorization)
     const token = req.headers.authorization.split(' ')[1];
-    logger(loglevel, token)
     const decodedToken = jwt.verify(token, 'RANDOM_TOKEN_SECRET');
-    logger(loglevel, decodedToken)
-    const userId = decodedToken.userId;
+    const userId = JSON.stringify(decodedToken.userId);
+    logger(userId)
     if (req.body.userId && req.body.userId !== userId) {
       throw 'Invalid user ID';
       console.log("invalid user")

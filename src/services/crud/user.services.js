@@ -115,7 +115,7 @@ class User {
     try {
       const response = await UserModel.destroy({
         where: {
-          uid: data.uid
+          uid: data.userId
         },
       });
       logger(loglevel, response);
